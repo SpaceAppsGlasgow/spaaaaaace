@@ -16,8 +16,8 @@ module.exports = {
     require('trailpack-core'),
     require('trailpack-repl'),
     require('trailpack-router'),
-    require('trailpack-express4'), 
-require('trailpack-waterline'), 
+    require('trailpack-express4'),
+require('trailpack-waterline'),
 require('trailpack-footprints')
   ],
 
