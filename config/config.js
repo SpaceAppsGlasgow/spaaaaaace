@@ -9,7 +9,7 @@ var config = {
       name: 'vagrant'
     },
     port: process.env.PORT || 3000,
-    db: 'mysql://localhost/vagrant-development'
+    db: 'mysql://root@localhost/vagrant-development'
   },
 
   test: {
