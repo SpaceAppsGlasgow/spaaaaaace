@@ -1,10 +1,13 @@
 var express = require('express'),
   router = express.Router(),
-  db = require('../models');
+  db = require('../models'),
+  request = require("request");
+
 
 module.exports = function (app) {
   app.use('/', router);
 };
+
 
 router.get('/', function (req, res, next) {
   db.Node.findAll().then(function (nodes) {
@@ -26,9 +29,7 @@ router.post('/add', function (req, res, next) {
 	var identifier = req.body.identifier
 	var key = req.body.key
 	db.Node.findOrCreate({where: {identifier: identifier}, defaults: {key: key}}).spread((node,created) => {
-		console.log(node, created)
 	
-		console.log(identifier, key);
 		 res.render('add', {
 	      title: 'Spaaace',
 	      created: created,
@@ -37,6 +38,10 @@ router.post('/add', function (req, res, next) {
 	}).error((err) => {
 		res.send("Error")
 	})
+
+
+
+
    
 });
 
