@@ -50,6 +50,16 @@ router.get('/list', function (req, res, next) {
   });
 });
 
+router.get('/node/:identifier', function(req, res, next){
+	var identifier = req.params.identifier;
+	db.Node.findOne({where: {identifier: identifier}}).then((node) => {
+		db.Record.findAll({where: {NodeId: node.id}}).then((records) => {
+			res.render("node_view.swig", {node: node, records: records})
+		})
+	})
+
+})
+
 router.post('/node/:identifier/data.json', function(req, res, next){
 	var identifier = req.params.identifier;
 	var data = req.body.d;
