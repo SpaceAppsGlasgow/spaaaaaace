@@ -65,16 +65,20 @@ router.post('/node/:identifier/data.json', function(req, res, next){
 	var data = req.body.d;
 	console.log(identifier, data)
 	db.Node.findOne({where: {identifier: identifier}}).then((node) => {
-		if (node != null) {
-			db.Record.create({data: data}).then((record) => {
-				record.setNode(node);
-				res.send({"data": data, "time": record.createdAt})
-
-			})
-		} else {
-			res.send({"error": "Device "+identifier+" does not exist"})
+		try {
+			var dataParsed = JSON.parse(data);
+		
+			if (node != null) {
+				db.Record.create({data: data}).then((record) => {
+					record.setNode(node);
+					res.send({"data": JSON.parse(data), "time": record.createdAt})
+				})
+			} else {
+				res.send({"error": "Device "+identifier+" does not exist"})
+			}
+		} catch (e) {
+			res.send({"error":"Data not in JSON format"})
 		}
-
 	})
 
 })
