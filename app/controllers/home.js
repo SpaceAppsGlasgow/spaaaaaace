@@ -43,9 +43,21 @@ router.post('/add', function (req, res, next) {
 
 router.get('/list', function (req, res, next) {
   db.Node.findAll().then(function (nodes) {
-    res.render('index', {
+    res.render('list', {
       title: 'Spaaace',
       nodes: nodes
     });
   });
 });
+
+router.post('/node/:identifier/data.json', function(req, res, next){
+	var identifier = req.params.identifier;
+	var data = req.body.d;
+	console.log(identifier, data)
+	db.Node.findOne({where: {identifier: identifier}}).then((node) => {
+		db.Record.create({data: data}).then((record) => {
+			record.setNode(node);
+		})	
+	})
+
+})

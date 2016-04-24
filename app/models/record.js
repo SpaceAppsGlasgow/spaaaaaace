@@ -4,7 +4,6 @@
 module.exports = function (sequelize, DataTypes) {
 
   var Record = sequelize.define('Record', {
-    timestamp: DataTypes.DATE,
     data: DataTypes.STRING
   }, {
     classMethods: {
