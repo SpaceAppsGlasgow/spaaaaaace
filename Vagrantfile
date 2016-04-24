@@ -68,5 +68,20 @@ Vagrant.configure(2) do |config|
     sudo apt-get update
     sudo DEBIAN_FRONTEND=noninteractive apt-get install -y mariadb-server
     sudo cat /vagrant/migrations/init.sql | sudo mysql
+    # curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.31.0/install.sh | bash
+#
+    
+    cd /vagrant
+    export NVM_DIR="/home/vagrant/.nvm"
+    [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+    nvm install 5.9.1
+    nvm alias default 5.9.1
+    
+    sudo chown -R vagrant:vagrant /home/vagrant/.nvm/
+    npm install -g grunt bower
+    npm install
+    bower install
+    
+    
   SHELL
 end
