@@ -11,7 +11,7 @@
                 <tbody>
                     {% for node in nodes %}
                         <tr>
-                            <td>{{node.identifier}}</td>
+                            <td><a href="/node/{{node.identifier}}">{{node.identifier}}</a></td>
                         </tr>
                     {% endfor %}
                 </tbody>
