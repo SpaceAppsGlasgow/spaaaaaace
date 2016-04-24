@@ -16,6 +16,8 @@
                 </tr>
             </table>
             <h3> Last Data </h3>
+            {% set record = records[records.length-1] %}
+            {% if key %}
             <table>
                 {% set record = records[records.length-1] %}
                 {% for key, item in JSON.parse(record.data) %}
@@ -28,6 +30,7 @@
                 {% endif %}
                 {% endfor %}
             </table>
+        {% endif %}
         </div>
     	<div class="columns small-6">
             <h3> Historical Data </h3>
