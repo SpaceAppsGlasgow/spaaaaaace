@@ -17,7 +17,7 @@
             </table>
             <h3> Last Data </h3>
             {% set record = records[records.length-1] %}
-            {% if key %}
+            {% if record %}
             <table>
                 {% set record = records[records.length-1] %}
                 {% for key, item in JSON.parse(record.data) %}
