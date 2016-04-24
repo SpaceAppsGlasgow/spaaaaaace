@@ -24,10 +24,16 @@
                 <tbody>
                     {% for record in records %}
                         <tr>
-                            <td>{{record.createdAt.toString()}}</td>
+                            <td>{{record.createdAt.toISOString()}}</td>
                             <td>{{record.data}}</td>
                         </tr>
                     {% endfor %}
+                    {% if (records.length == 0) %}
+                    <tr>
+                        <td>No Data</td>
+                        <td></td>
+                    </tr>
+                    {% endif %}
                 </tbody>
             </table>
         </div>
