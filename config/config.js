@@ -28,16 +28,7 @@ var config = {
     },
     port: process.env.PORT || 3000,
     db: 'mysql://localhost/vagrant-production'
-  },
-	
-	bluemix: {
-		root: rootPath,
-		app: { 
-			name: 'spaaaaaace'
-		},
-		port: process.env.PORT || 80,
-		db: 'mysql://bb09ff2240de96:a0fdbf41@us-cdbr-iron-east-03.cleardb.net:3306/ad_c94ef909b61acba?reconnect=true'
-	}
+  }
 };
 
 module.exports = config[env];
